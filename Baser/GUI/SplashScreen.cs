@@ -12,11 +12,20 @@ namespace Baser.GUI
         {
             InitializeComponent();
 
-            PrivateFontCollection privateFont = new PrivateFontCollection();
-            privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraBold.ttf");
-            privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraLight.ttf");
-            label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
-            label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
+            try
+            {
+                PrivateFontCollection privateFont = new PrivateFontCollection();
+                privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraBold.ttf");
+                privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraLight.ttf");
+                label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
+                label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
+            }
+            catch
+            {
+                MessageBox.Show("Está faltando arquivos essenciais para inicialização do programa, tente reinstalá-lo novamente.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
 
             //Carregar
             lblStatusCarregamento.Text = "Fazendo login...";
