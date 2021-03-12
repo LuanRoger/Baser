@@ -31,18 +31,16 @@ namespace Baser.GUI
             lblStatusCarregamento.Text = "Fazendo login...";
             LoginApp();
 
-            lblStatusCarregamento.Text = "Carregando...";
+            lblStatusCarregamento.Text = "Carregando..."; // Todo
         }
 
         private void LoginApp()
         {
-            var d = String.IsNullOrEmpty(ConfigurationManager.AppSettings["user"]);
-            var c = ConfigurationManager.AppSettings["user"];
-            if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["user"])) return;
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["user"])) return;
 
             Login login = new();
-            login.BringToFront();
             login.Show();
+            login.BringToFront();
         }
     }
 }

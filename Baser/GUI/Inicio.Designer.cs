@@ -43,7 +43,7 @@ namespace Baser.GUI
             this.btnSairConta = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.tmrInicio = new System.Windows.Forms.Timer(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.mnuMostrarLista = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -65,6 +65,8 @@ namespace Baser.GUI
             // 
             // mnuPrincipal
             // 
+            this.mnuPrincipal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMostrarLista});
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.Size = new System.Drawing.Size(48, 20);
             this.mnuPrincipal.Text = "Inicio";
@@ -114,7 +116,7 @@ namespace Baser.GUI
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel1.BackgroundImage")));
+            this.tableLayoutPanel1.BackgroundImage = global::Baser.Properties.Resources.WallpaperInicio;
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -164,22 +166,17 @@ namespace Baser.GUI
             this.tmrInicio.Interval = 1000;
             this.tmrInicio.Tick += new System.EventHandler(this.tmrInicio_Tick);
             // 
-            // toolStrip1
+            // mnuMostrarLista
             // 
-            this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(714, 25);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
+            this.mnuMostrarLista.Name = "mnuMostrarLista";
+            this.mnuMostrarLista.Size = new System.Drawing.Size(166, 22);
+            this.mnuMostrarLista.Text = "Mostrar lista base";
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 476);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -213,10 +210,10 @@ namespace Baser.GUI
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer tmrInicio;
         private System.Windows.Forms.Button btnSairConta;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.ToolStripMenuItem mnuMostrarLista;
     }
 }
 

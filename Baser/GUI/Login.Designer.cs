@@ -45,41 +45,46 @@ namespace Baser.GUI
             // 
             // txtLoginUsuario
             // 
-            this.txtLoginUsuario.Location = new System.Drawing.Point(49, 32);
+            this.txtLoginUsuario.Location = new System.Drawing.Point(57, 37);
+            this.txtLoginUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtLoginUsuario.Name = "txtLoginUsuario";
-            this.txtLoginUsuario.Size = new System.Drawing.Size(200, 20);
+            this.txtLoginUsuario.Size = new System.Drawing.Size(233, 23);
             this.txtLoginUsuario.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(49, 9);
+            this.label1.Location = new System.Drawing.Point(57, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 20);
+            this.label1.Size = new System.Drawing.Size(62, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Usuário:";
             // 
             // txtLoginSenha
             // 
-            this.txtLoginSenha.Location = new System.Drawing.Point(49, 76);
+            this.txtLoginSenha.Location = new System.Drawing.Point(57, 88);
+            this.txtLoginSenha.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtLoginSenha.Name = "txtLoginSenha";
             this.txtLoginSenha.PasswordChar = '*';
-            this.txtLoginSenha.Size = new System.Drawing.Size(200, 20);
+            this.txtLoginSenha.Size = new System.Drawing.Size(233, 23);
             this.txtLoginSenha.TabIndex = 2;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(49, 55);
+            this.label2.Location = new System.Drawing.Point(57, 63);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 18);
+            this.label2.Size = new System.Drawing.Size(49, 21);
             this.label2.TabIndex = 3;
             this.label2.Text = "Senha:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Baser.Properties.Resources.key;
-            this.pictureBox1.Location = new System.Drawing.Point(17, 70);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 81);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -87,18 +92,20 @@ namespace Baser.GUI
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Baser.Properties.Resources.user;
-            this.pictureBox2.Location = new System.Drawing.Point(17, 28);
+            this.pictureBox2.Location = new System.Drawing.Point(20, 32);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
             // btnEntrarLogin
             // 
-            this.btnEntrarLogin.Location = new System.Drawing.Point(12, 106);
+            this.btnEntrarLogin.Location = new System.Drawing.Point(14, 122);
+            this.btnEntrarLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnEntrarLogin.Name = "btnEntrarLogin";
-            this.btnEntrarLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnEntrarLogin.Size = new System.Drawing.Size(88, 27);
             this.btnEntrarLogin.TabIndex = 6;
             this.btnEntrarLogin.Text = "Entrar";
             this.btnEntrarLogin.UseVisualStyleBackColor = true;
@@ -106,9 +113,10 @@ namespace Baser.GUI
             // 
             // btnFecharLogin
             // 
-            this.btnFecharLogin.Location = new System.Drawing.Point(176, 106);
+            this.btnFecharLogin.Location = new System.Drawing.Point(205, 122);
+            this.btnFecharLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFecharLogin.Name = "btnFecharLogin";
-            this.btnFecharLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnFecharLogin.Size = new System.Drawing.Size(88, 27);
             this.btnFecharLogin.TabIndex = 7;
             this.btnFecharLogin.Text = "Fechar";
             this.btnFecharLogin.UseVisualStyleBackColor = true;
@@ -116,10 +124,10 @@ namespace Baser.GUI
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(263, 141);
+            this.ClientSize = new System.Drawing.Size(307, 163);
             this.Controls.Add(this.btnFecharLogin);
             this.Controls.Add(this.btnEntrarLogin);
             this.Controls.Add(this.pictureBox2);
@@ -130,15 +138,18 @@ namespace Baser.GUI
             this.Controls.Add(this.txtLoginUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = new System.Drawing.Point(15, 15);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "Login";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Button btnFecharLogin;

@@ -14,7 +14,11 @@ namespace Baser.GUI
             InitializeComponent();
 
             #region MenuClick
-            mnuPrincipal.Click += (sender, e) => throw new NotImplementedException();
+            mnuMostrarLista.Click += (sender, e) =>
+            {
+                Lista lista = new Lista(null);
+                lista.Show();
+            };
             mnuConfiguracoes.Click += (sender, e) =>
             {
                 Configuracoes configuracoes = new();
@@ -24,6 +28,8 @@ namespace Baser.GUI
             {
                 MessageBox.Show($"Baser v{Assembly.GetExecutingAssembly().GetName().Version}" +
                                 "\n" + "Luan Roger© 2021" +
+                                "\n" + "Mozilla Public License 2.0" +
+                                "\n" + "Papel de parede: starline (Freepik)" +
                                 "\n" + "Icone do programa: Benno Meyer", "Sobre",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             };

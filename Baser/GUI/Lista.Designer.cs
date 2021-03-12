@@ -1,7 +1,7 @@
 ﻿
 namespace Baser.GUI
 {
-    partial class ListaPesquisa
+    partial class Lista
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Baser.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaPesquisa));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lista));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mnuListaLivros = new System.Windows.Forms.MenuStrip();
@@ -94,6 +94,7 @@ namespace Baser.GUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuListaLivros;
             this.Name = "ListaPesquisa";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista";
             this.mnuListaLivros.ResumeLayout(false);

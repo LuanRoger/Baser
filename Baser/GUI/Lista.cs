@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace Baser.GUI
 {
-    public partial class ListaPesquisa : Form
+    public partial class Lista : Form
     {
-        public ListaPesquisa(DataTable data)
+        public Lista(DataTable data)
         {
             InitializeComponent();
             dgvLista.DataSource = data;
@@ -27,7 +27,7 @@ namespace Baser.GUI
             }
             catch
             {
-                MessageBox.Show("Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente_",
+                MessageBox.Show("Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.GetCurrentProcess().Kill();
             }

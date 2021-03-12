@@ -36,3 +36,4 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 Baser/Properties/PublishProfiles/FolderProfile.pubxml
+Baser/Properties/PublishProfiles/FolderProfile1.pubxml

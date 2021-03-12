@@ -15,7 +15,7 @@ namespace Baser.GUI
         private void btnEntrarLogin_Click(object sender, EventArgs e)
         {
             string usuario = txtLoginUsuario.Text.Trim();
-            string senha = txtLoginSenha.Text;
+            string senha = txtLoginSenha.Text; // Senha não faz diferença
 
             if (Verificadores.VerificarStrings(txtLoginUsuario.Text /*Senha não verificada (Padrão)*/))
             {
@@ -24,11 +24,13 @@ namespace Baser.GUI
                 return;
             }
 
-            //Salvar usuário
+            //Salvar usuário para não precisar logar novamente
             Configuracoes.config.AppSettings.Settings["user"].Value = usuario;
             Configuracoes.config.Save();
 
             AppManager.ReiniciarPrograma();
         }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e) => Environment.Exit(0);
     }
 }
