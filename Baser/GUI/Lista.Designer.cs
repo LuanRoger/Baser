@@ -35,6 +35,7 @@ namespace Baser.GUI
             this.mnuListaLivros = new System.Windows.Forms.MenuStrip();
             this.mnuImprimirLista = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvLista = new System.Windows.Forms.DataGridView();
+            this.mnuExportarExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListaLivros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +44,8 @@ namespace Baser.GUI
             // 
             this.mnuListaLivros.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.mnuListaLivros.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuImprimirLista});
+            this.mnuImprimirLista,
+            this.mnuExportarExcel});
             this.mnuListaLivros.Location = new System.Drawing.Point(0, 0);
             this.mnuListaLivros.Name = "mnuListaLivros";
             this.mnuListaLivros.Size = new System.Drawing.Size(822, 24);
@@ -84,7 +86,14 @@ namespace Baser.GUI
             this.dgvLista.Size = new System.Drawing.Size(822, 472);
             this.dgvLista.TabIndex = 2;
             // 
-            // ListaPesquisa
+            // mnuExportarExcel
+            // 
+            this.mnuExportarExcel.Image = global::Baser.Properties.Resources.page_excel;
+            this.mnuExportarExcel.Name = "mnuExportarExcel";
+            this.mnuExportarExcel.Size = new System.Drawing.Size(28, 20);
+            this.mnuExportarExcel.ToolTipText = "Exportar como planilha";
+            // 
+            // Lista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,7 +102,7 @@ namespace Baser.GUI
             this.Controls.Add(this.mnuListaLivros);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuListaLivros;
-            this.Name = "ListaPesquisa";
+            this.Name = "Lista";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista";
@@ -109,5 +118,6 @@ namespace Baser.GUI
         private System.Windows.Forms.MenuStrip mnuListaLivros;
         private System.Windows.Forms.ToolStripMenuItem mnuImprimirLista;
         private System.Windows.Forms.DataGridView dgvLista;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportarExcel;
     }
 }

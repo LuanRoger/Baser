@@ -4,14 +4,17 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <SignAssembly>false</SignAssembly>
     <Platforms>AnyCPU;x64;x86</Platforms>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Authors>Luan Roger</Authors>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
