@@ -33,6 +33,7 @@ namespace Baser.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuPrincipal = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMostrarLista = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfiguracoes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -43,7 +44,6 @@ namespace Baser.GUI
             this.btnSairConta = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.tmrInicio = new System.Windows.Forms.Timer(this.components);
-            this.mnuMostrarLista = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -70,6 +70,12 @@ namespace Baser.GUI
             this.mnuPrincipal.Name = "mnuPrincipal";
             this.mnuPrincipal.Size = new System.Drawing.Size(48, 20);
             this.mnuPrincipal.Text = "Inicio";
+            // 
+            // mnuMostrarLista
+            // 
+            this.mnuMostrarLista.Name = "mnuMostrarLista";
+            this.mnuMostrarLista.Size = new System.Drawing.Size(166, 22);
+            this.mnuMostrarLista.Text = "Mostrar lista base";
             // 
             // mnuConfiguracoes
             // 
@@ -165,12 +171,6 @@ namespace Baser.GUI
             this.tmrInicio.Enabled = true;
             this.tmrInicio.Interval = 1000;
             this.tmrInicio.Tick += new System.EventHandler(this.tmrInicio_Tick);
-            // 
-            // mnuMostrarLista
-            // 
-            this.mnuMostrarLista.Name = "mnuMostrarLista";
-            this.mnuMostrarLista.Size = new System.Drawing.Size(166, 22);
-            this.mnuMostrarLista.Text = "Mostrar lista base";
             // 
             // Inicio
             // 
