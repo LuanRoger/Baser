@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace Baser.DB
+namespace Baser.SQLServerDirect.DB
 {
     internal abstract class Db
     {

@@ -124,13 +124,12 @@ namespace Baser.GUI
             // 
             this.tableLayoutPanel1.BackgroundImage = global::Baser.Properties.Resources.WallpaperInicio;
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.btnSairConta, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblUsuario, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblUsuario, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -147,9 +146,9 @@ namespace Baser.GUI
             this.btnSairConta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSairConta.Location = new System.Drawing.Point(3, 404);
             this.btnSairConta.Name = "btnSairConta";
-            this.btnSairConta.Size = new System.Drawing.Size(53, 23);
+            this.btnSairConta.Size = new System.Drawing.Size(100, 23);
             this.btnSairConta.TabIndex = 0;
-            this.btnSairConta.Text = "Sair";
+            this.btnSairConta.Text = "Desconectar";
             this.btnSairConta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSairConta.UseVisualStyleBackColor = true;
             this.btnSairConta.Click += new System.EventHandler(this.btnSairConta_Click);
@@ -159,7 +158,7 @@ namespace Baser.GUI
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblUsuario.Location = new System.Drawing.Point(62, 408);
+            this.lblUsuario.Location = new System.Drawing.Point(109, 408);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(3, 0, 3, 7);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(47, 15);

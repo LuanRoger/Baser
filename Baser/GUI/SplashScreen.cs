@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Baser.DB.EntityFramework;
+using Baser.DB.EntityFramework.Models;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Baser.GUI
@@ -12,6 +16,8 @@ namespace Baser.GUI
         {
             InitializeComponent();
 
+            // As fontes são dadas como essenciais
+            // O programa não irá abrir caso elas não existam
             try
             {
                 PrivateFontCollection privateFont = new PrivateFontCollection();
@@ -27,17 +33,29 @@ namespace Baser.GUI
                 throw;
             }
 
-            //Carregar
-            lblStatusCarregamento.Text = "Fazendo login...";
-            LoginApp();
+            Activated += async (_, _) => await LoadAppAction();
+        }
 
-            lblStatusCarregamento.Text = "Carregando..."; // Todo
+        private async Task LoadAppAction()
+        {
+            using(EntityContext context = new()) context.Database.EnsureCreated();
+
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["user"]))
+            {
+                LoginApp();
+                return;
+            }
+
+            List<Task> toLoad = new();
+            toLoad.Add(Task.Delay(2000));
+            toLoad.Add(Task.Run(() => lblStatusCarregamento.Invoke((MethodInvoker) delegate { lblStatusCarregamento.Text = "Carregando..."; })));
+            await Task.WhenAll(toLoad);
+
+            Close();
         }
 
         private void LoginApp()
         {
-            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["user"])) return;
-
             Login login = new();
             login.Show();
             login.BringToFront();

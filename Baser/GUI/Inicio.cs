@@ -2,8 +2,8 @@
 using System.Configuration;
 using System.Drawing;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Baser.Strings;
 
 namespace Baser.GUI
 {
@@ -12,6 +12,8 @@ namespace Baser.GUI
         public Inicio()
         {
             InitializeComponent();
+            LanguagesResouces.GetGlobalizationInstance().LangTextObserver += Globalization_LangTextObserver;
+            LanguagesResouces.GetGlobalizationInstance().StartGlobalization();
 
             #region MenuClick
             mnuMostrarLista.Click += (sender, e) =>
@@ -36,22 +38,37 @@ namespace Baser.GUI
             #endregion
         }
 
+        private void Globalization_LangTextObserver(object sender, GlobalStrings.UpdateModeEventArgs updateModeEventArgs)
+        {
+            btnSairConta.Size = updateModeEventArgs.lang switch
+            {
+                0 => new Size(100, 23),
+                1 => new Size(70, 23)
+            };
+            Text = LanguagesResouces.GetGlobalizationInstance().SetText(3);
+            mnuPrincipal.Text = LanguagesResouces.GetGlobalizationInstance().SetText(4);
+            mnuMostrarLista.Text = LanguagesResouces.GetGlobalizationInstance().SetText(5);
+            mnuConfiguracoes.Text = LanguagesResouces.GetGlobalizationInstance().SetText(6);
+            mnuSobre.Text = LanguagesResouces.GetGlobalizationInstance().SetText(7);
+            btnSairConta.Text = LanguagesResouces.GetGlobalizationInstance().SetText(8);
+            toolStripStatusLabel1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(9);
+            toolStripStatusLabel2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(10);
+        }
+
         private void tmrInicio_Tick(object sender, EventArgs e) => lblTempo.Text = DateTime.Now.ToString();
 
-        private async void Inicio_Load(object sender, EventArgs e)
+        private void Inicio_Load(object sender, EventArgs e)
         {
-            this.ShowInTaskbar = false;
-            this.Opacity = 0;
+            ShowInTaskbar = false;
+            Opacity = 0;
 
             SplashScreen splashScreen = new();
             splashScreen.Show();
-            await Task.Delay(3000);
-
-            if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["user"])) return;
-            splashScreen.Close();
-            this.ShowInTaskbar = true;
-            this.Opacity = 100;
-            this.BringToFront();
+            splashScreen.FormClosed += (_, _) => {
+                ShowInTaskbar = true;
+                Opacity = 100;
+                BringToFront();
+            };
 
             lblUsuario.Text = ConfigurationManager.AppSettings["user"];
             lblUsuario.BackColor = Color.Transparent;
@@ -70,7 +87,7 @@ namespace Baser.GUI
             switch (e.KeyCode)
             {
                 case Keys.F6:
-                    this.Close();
+                    Close();
                     break;
                 case Keys.F7:
                     btnSairConta.PerformClick();
