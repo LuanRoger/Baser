@@ -1,6 +1,6 @@
 <!--Banner-->
 <h1 align="center">
-  <img alt="SplashScreen" src="https://github.com/LuanRoger/Baser/blob/master/Baser/assets/screenshots/PrintSplashScreen.png"/>
+  <img alt="SplashScreen" src="https://github.com/LuanRoger/Baser/blob/master/screenshots/PrintSplashScreen.png"/>
 </h1>
 
 <!--Shields-->
@@ -10,33 +10,35 @@
 <img alt="Github LastCommit" src="https://img.shields.io/github/last-commit/LuanRoger/Baser"/>
 </p>
 
-<h3 align="center">Programa base para outros projetos ou programas</h4>
+<h3 align="center">Base program for other projects or programs.</h4>
 
 ### Features
-* Tela de Login pronta
-* SplashScreen editavel
-* Lista pronta com suporte a impressão com DGVPrinter e exibição de dados
-* Classe para conexão com banco de dados com SQL Server LocalDB
-* Tela simples de configurações
+* Login ready
+* Editable SplashScreen
+* Ready-made list with support for printing with DGVPrinter and data display
+* Class for database connection with SQL Server LocalDB
+* Entity framework ready
+* Simple settings screen
 
-### Tecnologias e linguagem
+### Technologies and language
 - [.NET 5](https://dotnet.microsoft.com)
-- C#
+- C# 9
 - Windows Forms
 - [SQL Server LocalDB](https://docs.microsoft.com/pt-br/sql/database-engine/configure-windows/sql-server-express-localdb)
+- Entity Framework Core
 
-### Capturas de tela
-![](https://github.com/LuanRoger/Baser/blob/master/Baser/assets/screenshots/PrintInicio.png)
->Inicio
+### Screenshots
+![](https://github.com/LuanRoger/Baser/blob/master/screenshots/PrintInicio.png)
+>Home
 
-![](https://github.com/LuanRoger/Baser/blob/master/Baser/assets/screenshots/PrintLogin.png)
+![](https://github.com/LuanRoger/Baser/blob/master/screenshots/PrintLogin.png)
 >Login
 
-![](https://github.com/LuanRoger/Baser/blob/master/Baser/assets/screenshots/PrintLista.png)
->Lista
+![](https://github.com/LuanRoger/Baser/blob/master/screenshots/PrintLista.png)
+>List
 
-## Pré-requisitos
-Apenas tenha o [Runtime do .NET 5](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) instalado.
+![](https://github.com/LuanRoger/Baser/blob/master/screenshots/PrintConfig.png)
+>Configurations
 
-## Licença
-Licenciado sob Mozilla Public License 2.0
+## License
+Licensed under Mozilla Public License 2.0
