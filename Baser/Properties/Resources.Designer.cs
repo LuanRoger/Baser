@@ -63,6 +63,16 @@ namespace Baser.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BaserIcon {
+            get {
+                object obj = ResourceManager.GetObject("BaserIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exit_account {
             get {
                 object obj = ResourceManager.GetObject("exit_account", resourceCulture);

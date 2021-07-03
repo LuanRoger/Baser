@@ -133,10 +133,13 @@
   <data name="exit_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\imgs\exit_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\imgs\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\imgs\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\imgs\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BaserIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\imgs\BaserIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

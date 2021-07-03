@@ -28,12 +28,8 @@ namespace Baser.GUI
             };
             mnuSobre.Click += (sender, e) =>
             {
-                MessageBox.Show($"Baser v{Assembly.GetExecutingAssembly().GetName().Version}" +
-                                "\n" + "Luan Roger© 2021" +
-                                "\n" + "Mozilla Public License 2.0" +
-                                "\n" + "Papel de parede: starline (Freepik)" +
-                                "\n" + "Icone do programa: Benno Meyer", "Sobre",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Sobre sobre = new();
+                sobre.Show();
             };
             #endregion
         }
