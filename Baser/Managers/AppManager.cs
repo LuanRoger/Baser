@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using Baser.Strings;
-using GlobalStrings;
 
 namespace Baser
 {
@@ -14,6 +11,11 @@ namespace Baser
         {
             Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
             Process.GetCurrentProcess().Kill();
+        }
+        
+        public static void CreateAppDirectory()
+        {
+            Directory.CreateDirectory(Consts.APP_FOLDER);
         }
     }
 }

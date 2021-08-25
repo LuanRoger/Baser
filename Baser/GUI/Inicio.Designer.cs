@@ -185,6 +185,7 @@ namespace Baser.GUI
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baser";
+            this.Activated += new System.EventHandler(this.Inicio_Activated);
             this.Load += new System.EventHandler(this.Inicio_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Inicio_KeyDown);
             this.menuStrip1.ResumeLayout(false);

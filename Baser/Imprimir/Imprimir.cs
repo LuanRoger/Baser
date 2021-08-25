@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
-using Baser;
 
 namespace Baser
 {

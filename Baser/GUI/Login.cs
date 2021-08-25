@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Configuration;
-using Baser.DB.EntityFramework;
 using Baser.Strings;
 using Baser.DB.EntityFramework.Models;
-using System.Linq;
+using Baser.Enum;
 
 namespace Baser.GUI
 {
@@ -13,17 +11,16 @@ namespace Baser.GUI
         public Login()
         {
             InitializeComponent();
-            User.CreateDefaultUser();
             LanguagesResouces.GetGlobalizationInstance().LangTextObserver += Login_LangTextObserver;
             LanguagesResouces.GetGlobalizationInstance().StartGlobalization();
         }
 
         private void Login_LangTextObserver(object sender, GlobalStrings.UpdateModeEventArgs updateModeEventArgs)
         {
-            label1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(11);
-            label2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(12);
-            btnEntrarLogin.Text = LanguagesResouces.GetGlobalizationInstance().SetText(14);
-            btnFecharLogin.Text = LanguagesResouces.GetGlobalizationInstance().SetText(15);
+            label1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 11);
+            label2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 12);
+            btnEntrarLogin.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 14);
+            btnFecharLogin.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 15);
         }
 
         private void btnFecharLogin_Click(object sender, EventArgs e) => Application.Exit();
@@ -32,9 +29,8 @@ namespace Baser.GUI
         {
             string usuario = txtLoginUsuario.Text.Trim();
             string senha = txtLoginSenha.Text.Trim();
-            User user;
 
-            //Atenção a senha não é verificada
+            //THE PASSWORD IS NOT VERIFIED
             if (Verificadores.VerificarStrings(usuario, senha))
             {
                 MessageBox.Show("Preencha os campos para continuar", "Error",
@@ -42,23 +38,12 @@ namespace Baser.GUI
                 return;
             }
 
-            using(var dbContext = new EntityContext())
+            AppConfigurationManger.configManager.userSection = AppConfigurationManger.configManager.userSection with
             {
-                try
-                {
-                    user = dbContext.UserContext.First(u => u.UserName == usuario && u.UserPassword == senha);
-                }
-                catch
-                {
-                    MessageBox.Show("Usuário ou senha icorreto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
-            //Salvar usuário para não precisar logar novamente
-            Configuracoes.config.AppSettings.Settings["user"].Value = usuario;
-            Configuracoes.config.AppSettings.Settings["userType"].Value = user.UserType.ToString();
-            Configuracoes.config.Save();
+                  userName = usuario,
+                  userType = UserType.USU
+            };
+            AppConfigurationManger.SaveConfig();
 
             AppManager.ReiniciarPrograma();
         }

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Configuration;
 using System.Windows.Forms;
-using Baser.DB.EntityFramework;
 using Baser.Strings;
 
 namespace Baser.GUI
 {
     public partial class Configuracoes : Form
     {
-        public static Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
         public Configuracoes()
         {
             InitializeComponent();
@@ -20,27 +16,35 @@ namespace Baser.GUI
 
         private void Configuracoes_LangTextObserver(object sender, GlobalStrings.UpdateModeEventArgs updateModeEventArgs)
         {
-            label1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(2);
-            label2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(16);
-            btnSalvarConfiguracoes.Text = LanguagesResouces.GetGlobalizationInstance().SetText(1);
-            Text = LanguagesResouces.GetGlobalizationInstance().SetText(0);
+            label1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 2);
+            label2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 16);
+            btnSalvarConfiguracoes.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 1);
+            Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 0);
         }
 
         private void CarregarConfiguracoes()
         {
-            cmbIdioma.SelectedIndex = int.Parse(ConfigurationManager.AppSettings["lang"]);
-            txtConnectionString.Text = EntityContext.ConnectionStringsSqlServer;
+            cmbIdioma.SelectedIndex = AppConfigurationManger.configManager.LanguageSection.langCode;
+            txtConnectionString.Text = AppConfigurationManger.configManager.DatabaseConnection.connectionString;
         }
 
         private void btnSalvarConfiguracoes_Click(object sender, EventArgs e)
         {
-            config.AppSettings.Settings["lang"].Value = cmbIdioma.SelectedIndex.ToString();
-            config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = txtConnectionString.Text;
+            AppConfigurationManger.configManager.LanguageSection = 
+                AppConfigurationManger.configManager.LanguageSection with
+            {
+                langCode = cmbIdioma.SelectedIndex
+            };
+            AppConfigurationManger.configManager.DatabaseConnection = 
+                AppConfigurationManger.configManager.DatabaseConnection with
+            {
+                connectionString = txtConnectionString.Text
+            };
 
-            config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
+            AppConfigurationManger.SaveConfig();
 
-            LanguagesResouces.GetGlobalizationInstance().UpdateLang(int.Parse(ConfigurationManager.AppSettings["lang"]));
+            LanguagesResouces.GetGlobalizationInstance()
+                .UpdateLang(AppConfigurationManger.configManager.LanguageSection.langCode);
         }
     }
 }

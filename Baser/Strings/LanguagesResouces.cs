@@ -1,78 +1,86 @@
 ﻿using GlobalStrings;
 using System.Collections.Generic;
-using System.Configuration;
 
 namespace Baser.Strings
 {
     public static class LanguagesResouces
     {
-        private static Globalization globalization {get; set;}
-        private static List<LanguageInfo> languageInfos = new();
-        private static LanguageInfo ptBrStrings = new(0);
-        private static LanguageInfo enStrings = new(1);
+        private static Globalization<int, int, int> globalization { get; set; }
+        private static List<LanguageInfo<int, int, int>> languageInfos = new();
+        private static LanguageInfo<int, int, int> ptBrStrings = new(0);
+        private static LanguageInfo<int, int, int> enStrings = new(1);
 
-        private static Globalization InitGlobalization()
+        private static Globalization<int, int, int> InitGlobalization()
         {
             InitPtBrLang();
             InitEnLanguage();
 
-            return new Globalization(languageInfos, int.Parse(ConfigurationManager.AppSettings["lang"]));
+            return new(languageInfos, AppConfigurationManger.configManager.LanguageSection.langCode);
         }
         private static void InitPtBrLang()
         {
-            ptBrStrings.textLangBook = new();
-            ptBrStrings.textLangBook.Add(0, "Configurações");
-            ptBrStrings.textLangBook.Add(1, "Salvar");
-            ptBrStrings.textLangBook.Add(2, "Idioma");
-            ptBrStrings.textLangBook.Add(16, "String de conexão (SQL Server):");
-
-            ptBrStrings.textLangBook.Add(3, "Baser");
-            ptBrStrings.textLangBook.Add(4, "Inicio");
-            ptBrStrings.textLangBook.Add(5, "Mostrar lista");
-            ptBrStrings.textLangBook.Add(6, "Configurações");
-            ptBrStrings.textLangBook.Add(7, "Sobre");
-            ptBrStrings.textLangBook.Add(8, "Desconectar");
-            ptBrStrings.textLangBook.Add(9, "[F7] - Desconectar");
-            ptBrStrings.textLangBook.Add(10, "[F6] - Sair");
-
-            ptBrStrings.textLangBook.Add(11, "Usuário");
-            ptBrStrings.textLangBook.Add(12, "Senha");
-            ptBrStrings.textLangBook.Add(13, "Manter conectado");
-            ptBrStrings.textLangBook.Add(14, "Entrar");
-            ptBrStrings.textLangBook.Add(15, "Fechar");
+            ptBrStrings.textBookCollection = new()
+            {
+                { 0, new()
+                {
+                    {0, "Configurações"},
+                    { 1, "Salvar" },
+                    { 2, "Idioma" },
+                    { 3, "Baser" },
+                    { 4, "Inicio" },
+                    { 5, "Mostrar lista" },
+                    { 6, "Configurações" },
+                    { 7, "Sobre" },
+                    { 8, "Desconectar" },
+                    { 9, "[F7] - Desconectar" },
+                    { 10, "[F6] - Sair" },
+                    { 11, "Usuário" },
+                    { 12, "Senha" },
+                    { 13, "Manter conectado" },
+                    { 14, "Entrar" },
+                    { 15, "Fechar" },
+                    { 16, "String de conexão (SQL Server):" },
+                    { 17, "Papel de parede: starline (Freepik)" }
+                }}
+            };
 
             languageInfos.Add(ptBrStrings);
         }
         private static void InitEnLanguage()
         {
-            enStrings.textLangBook = new();
-            enStrings.textLangBook.Add(0, "Configuration");
-            enStrings.textLangBook.Add(1, "Save");
-            enStrings.textLangBook.Add(2, "Languages");
-            enStrings.textLangBook.Add(16, "Connection String (SQL Server):");
-
-            enStrings.textLangBook.Add(3, "Baser");
-            enStrings.textLangBook.Add(4, "Home");
-            enStrings.textLangBook.Add(5, "Mostrar lista");
-            enStrings.textLangBook.Add(6, "Configuration");
-            enStrings.textLangBook.Add(7, "About");
-            enStrings.textLangBook.Add(8, "Logoff");
-            enStrings.textLangBook.Add(9, "[F7] - Logoff");
-            enStrings.textLangBook.Add(10, "[F6] - Exit");
-
-            enStrings.textLangBook.Add(11, "User");
-            enStrings.textLangBook.Add(12, "Password");
-            enStrings.textLangBook.Add(13, "Keep connected");
-            enStrings.textLangBook.Add(14, "Enter");
-            enStrings.textLangBook.Add(15, "Close");
+            enStrings.textBookCollection = new()
+            {
+                { 0, new()
+                {
+                    {0, "Configuration"},
+                    { 1, "Save" },
+                    { 2, "Languages" },
+                    { 3, "Baser" },
+                    { 4, "Home" },
+                    { 5, "Show list" },
+                    { 6, "Configuration" },
+                    { 7, "About" },
+                    { 8, "Logoff" },
+                    { 9, "[F7] - Logoff" },
+                    { 10, "[F6] - Exit" },
+                    { 11, "User" },
+                    { 12, "Password" },
+                    { 13, "Keep connected" },
+                    { 14, "Enter" },
+                    { 15, "Close" },
+                    { 16, "Connection String (SQL Server):" },
+                    { 17, "Wallpaper: starline (Freepik)" }
+                }}
+            };
 
             languageInfos.Add(enStrings);
         }
 
-        public static Globalization GetGlobalizationInstance()
+        public static Globalization<int, int, int> GetGlobalizationInstance()
         {
-            if(globalization == null) return globalization = InitGlobalization();
-            else return globalization;
+            globalization ??= InitGlobalization();
+            
+            return globalization;
         }
     }
 }

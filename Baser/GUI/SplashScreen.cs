@@ -1,12 +1,10 @@
-﻿using Baser.DB.EntityFramework;
-using Baser.DB.EntityFramework.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Baser.Strings;
 
 namespace Baser.GUI
 {
@@ -15,16 +13,19 @@ namespace Baser.GUI
         public SplashScreen()
         {
             InitializeComponent();
-
-            // As fontes são dadas como essenciais
-            // O programa não irá abrir caso elas não existam
+            
+            AppManager.CreateAppDirectory();
+            
+            if (File.Exists(Consts.CONFIG_FILE_PATH)) AppConfigurationManger.LoadConfig();
+            else AppConfigurationManger.SaveConfig();
+            
             try
             {
-                PrivateFontCollection privateFont = new PrivateFontCollection();
+                PrivateFontCollection privateFont = new();
                 privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraBold.ttf");
                 privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraLight.ttf");
-                label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
-                label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
+                label1.Font = new(privateFont.Families[0], 20, FontStyle.Bold);
+                label2.Font = new(privateFont.Families[1], 7, FontStyle.Regular);
             }
             catch
             {
@@ -33,22 +34,23 @@ namespace Baser.GUI
                 throw;
             }
 
-            Activated += async (_, _) => await LoadAppAction();
+            Load += async (_, _) => await LoadAppAction();
         }
 
         private async Task LoadAppAction()
         {
-            using(EntityContext context = new()) context.Database.EnsureCreated();
-
-            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["user"]))
+            if (string.IsNullOrEmpty(AppConfigurationManger.configManager.userSection.userName))
             {
                 LoginApp();
                 return;
             }
-
+            
+            LanguagesResouces.GetGlobalizationInstance().StartGlobalization();
+            
             List<Task> toLoad = new();
-            toLoad.Add(Task.Delay(2000));
-            toLoad.Add(Task.Run(() => lblStatusCarregamento.Invoke((MethodInvoker) delegate { lblStatusCarregamento.Text = "Carregando..."; })));
+            toLoad.Add(Task.Delay(Consts.SPALSHSCREEN_LOAD_TIME));
+            toLoad.Add(Task.Run(() => lblStatusCarregamento.Invoke((MethodInvoker) 
+                delegate { lblStatusCarregamento.Text = "Carregando..."; })));
             await Task.WhenAll(toLoad);
 
             Close();
