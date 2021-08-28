@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <AssemblyVersion>2.3.0.0</AssemblyVersion>
     <ApplicationIcon>BaserIcon256x256.ico</ApplicationIcon>
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <SignAssembly>false</SignAssembly>

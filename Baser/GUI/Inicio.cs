@@ -33,7 +33,7 @@ namespace Baser.GUI
         
         private void Inicio_Activated(object sender, EventArgs e)
         {
-            if(Opacity == 1)
+            if(Verificadores.IsVisible(this))
             {
                 LanguagesResouces.GetGlobalizationInstance()
                     .UpdateLang(AppConfigurationManger.configManager.LanguageSection.langCode);
@@ -72,8 +72,7 @@ namespace Baser.GUI
             #endregion
 
             lblUsuario.Text = AppConfigurationManger.configManager.userSection.userName;
-            lblUsuario.BackColor = Color.Transparent;
-            
+
             LanguagesResouces.GetGlobalizationInstance().LangTextObserver += Globalization_LangTextObserver;
         }
 

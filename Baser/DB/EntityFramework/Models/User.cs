@@ -6,7 +6,7 @@ using System.Linq;
 namespace Baser.DB.EntityFramework.Models
 {
     [Table("User")]
-    class User
+    public class User
     {
         [Key]
         public int UserId { get; set; }
@@ -16,11 +16,12 @@ namespace Baser.DB.EntityFramework.Models
 
         public static void CreateDefaultUser()
         {
-            var dbContext = new EntityContext();
+            EntityContext dbContext = new();
 
             if(dbContext.UserContext.Where(u => u.UserName == "admin").ToList().Count > 1) return;
 
-            dbContext.UserContext.Add(new User {
+            dbContext.UserContext.Add(new()
+            {
                 UserName = "admin",
                 UserPassword = "admin",
                 UserType = UserType.ADM

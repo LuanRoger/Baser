@@ -34,8 +34,8 @@ namespace Baser.GUI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mnuListaLivros = new System.Windows.Forms.MenuStrip();
             this.mnuImprimirLista = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.mnuExportarExcel = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.mnuListaLivros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +58,13 @@ namespace Baser.GUI
             this.mnuImprimirLista.Name = "mnuImprimirLista";
             this.mnuImprimirLista.Size = new System.Drawing.Size(28, 20);
             this.mnuImprimirLista.ToolTipText = "Imprimir";
+            // 
+            // mnuExportarExcel
+            // 
+            this.mnuExportarExcel.Image = global::Baser.Properties.Resources.page_excel;
+            this.mnuExportarExcel.Name = "mnuExportarExcel";
+            this.mnuExportarExcel.Size = new System.Drawing.Size(28, 20);
+            this.mnuExportarExcel.ToolTipText = "Exportar como planilha";
             // 
             // dgvLista
             // 
@@ -86,13 +93,6 @@ namespace Baser.GUI
             this.dgvLista.Size = new System.Drawing.Size(822, 472);
             this.dgvLista.TabIndex = 2;
             // 
-            // mnuExportarExcel
-            // 
-            this.mnuExportarExcel.Image = global::Baser.Properties.Resources.page_excel;
-            this.mnuExportarExcel.Name = "mnuExportarExcel";
-            this.mnuExportarExcel.Size = new System.Drawing.Size(28, 20);
-            this.mnuExportarExcel.ToolTipText = "Exportar como planilha";
-            // 
             // Lista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -106,6 +106,7 @@ namespace Baser.GUI
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista";
+            this.Load += new System.EventHandler(this.Lista_Load);
             this.mnuListaLivros.ResumeLayout(false);
             this.mnuListaLivros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();

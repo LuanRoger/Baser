@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Baser.DB.EntityFramework
 {
-    class EntityContext : DbContext
+    public class EntityContext : DbContext
     {
-        public static string ConnectionStringsSqlServer {get; private set; } = 
+        private static readonly string ConnectionStringsSqlServer = 
             AppConfigurationManger.configManager.DatabaseConnection.connectionString;
         public DbSet<User> UserContext {get; set;}
 

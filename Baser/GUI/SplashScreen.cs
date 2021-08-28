@@ -22,8 +22,8 @@ namespace Baser.GUI
             try
             {
                 PrivateFontCollection privateFont = new();
-                privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraBold.ttf");
-                privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraLight.ttf");
+                privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
+                privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRALIGHT);
                 label1.Font = new(privateFont.Families[0], 20, FontStyle.Bold);
                 label2.Font = new(privateFont.Families[1], 7, FontStyle.Regular);
             }

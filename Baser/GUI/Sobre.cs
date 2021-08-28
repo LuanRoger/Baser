@@ -25,7 +25,7 @@ namespace Baser.GUI
         private void Sobre_Load(object sender, System.EventArgs e)
         {
             PrivateFontCollection privateFont = new();
-            privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraBold.ttf");
+            privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
             lblProgramName.Font = new(privateFont.Families[0], 20, FontStyle.Bold);
 
             lblProgramName.Text = Assembly.GetExecutingAssembly().GetName().Name;

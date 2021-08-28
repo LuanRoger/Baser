@@ -76,7 +76,7 @@ namespace Baser //AllocationRequest
         public void Log(Categories category, String msg)
         {
             // get call stack
-            StackTrace stackTrace = new StackTrace();
+            StackTrace stackTrace = new();
 
             // get calling method name
             String caller = stackTrace.GetFrame(useFrame).GetMethod().Name;
@@ -145,7 +145,7 @@ namespace Baser //AllocationRequest
         /// <param name="name"></param>
         public static void Write(String from, LogManager.Categories category, String msg, String path, String name)
         {
-            StringBuilder line = new StringBuilder();
+            StringBuilder line = new();
             line.Append(DateTime.Now.ToShortDateString().ToString());
             line.Append("-");
             line.Append(DateTime.Now.ToLongTimeString().ToString());
@@ -155,7 +155,7 @@ namespace Baser //AllocationRequest
             line.Append(from.PadRight(13, ' '));
             line.Append(",");
             line.Append(msg);
-            StreamWriter w = new StreamWriter(path + "\\" + LogFileName(name), true);
+            StreamWriter w = new(path + "\\" + LogFileName(name), true);
             w.WriteLine(line.ToString());
             w.Flush();
             w.Close();
@@ -221,7 +221,7 @@ namespace Baser //AllocationRequest
                     //g.DrawImageUnscaled(ii.theImage, ii.upperleft(pagewidth, pageheight, margins));
                     g.DrawImage(ii.theImage,
                         new Rectangle(ii.upperleft(pagewidth, pageheight, margins),
-                        new Size(ii.theImage.Width, ii.theImage.Height)));
+                        new(ii.theImage.Width, ii.theImage.Height)));
                 }
             }
         }
@@ -266,7 +266,7 @@ namespace Baser //AllocationRequest
 
                 // if we've been given an absolute location, just use it
                 if (ImageLocation == Location.Absolute)
-                    return new Point(ImageX, ImageY);
+                    return new(ImageX, ImageY);
 
                 // set the y location based on header or footer
                 switch (ImageLocation)
@@ -300,7 +300,7 @@ namespace Baser //AllocationRequest
                         throw new ArgumentException(String.Format("Unkown value: {0}", ImageAlignment));
                 }
 
-                return new Point(x, y);
+                return new(x, y);
             }
         }
 
@@ -313,10 +313,10 @@ namespace Baser //AllocationRequest
         {
             public PageDef(Margins m, int count, int pagewidth)
             {
-                columnindex = new List<int>(count);
-                colstoprint = new List<object>(count);
-                colwidths = new List<float>(count);
-                colwidthsoverride = new List<float>(count);
+                columnindex = new(count);
+                colstoprint = new(count);
+                colwidths = new(count);
+                colwidthsoverride = new(count);
                 coltotalwidth = 0;
                 margins = (Margins)m.Clone();
                 pageWidth = pagewidth;
@@ -428,7 +428,7 @@ namespace Baser //AllocationRequest
                 enablelogging = value;
                 if (enablelogging)
                 {
-                    Logger = new LogManager(".", "DGVPrinter");
+                    Logger = new(".", "DGVPrinter");
                 }
             }
         }
@@ -497,7 +497,7 @@ namespace Baser //AllocationRequest
         /// <summary>
         /// expose settings for the PrintDialog displayed to the user
         /// </summary>
-        private PrintDialogSettingsClass printDialogSettings = new PrintDialogSettingsClass();
+        private PrintDialogSettingsClass printDialogSettings = new();
         public PrintDialogSettingsClass PrintDialogSettings
         {
             get { return printDialogSettings; }
@@ -1268,7 +1268,7 @@ namespace Baser //AllocationRequest
 
             // if we still don't have a header cell format, create an empty
             if (null == rowheadercellformat)
-                rowheadercellformat = new StringFormat(headercellformatflags);
+                rowheadercellformat = new(headercellformatflags);
 
             return rowheadercellformat;
         }
@@ -1288,7 +1288,7 @@ namespace Baser //AllocationRequest
         /// Allow override of the header cell format object
         /// </summary>
         private Dictionary<string, DataGridViewCellStyle> columnheaderstyles =
-            new Dictionary<string, DataGridViewCellStyle>();
+            new();
         public Dictionary<string, DataGridViewCellStyle> ColumnHeaderStyles
         {
             get { return columnheaderstyles; }
@@ -1311,7 +1311,7 @@ namespace Baser //AllocationRequest
 
             // if we still don't have a header cell format, create an empty
             if (null == columnheadercellformat)
-                columnheadercellformat = new StringFormat(headercellformatflags);
+                columnheadercellformat = new(headercellformatflags);
 
             return columnheadercellformat;
         }
@@ -1361,7 +1361,7 @@ namespace Baser //AllocationRequest
 
             // if we still don't have a cell format, create an empty
             if (null == cellformat)
-                cellformat = new StringFormat(cellformatflags);
+                cellformat = new(cellformatflags);
 
             return cellformat;
         }
@@ -1393,8 +1393,8 @@ namespace Baser //AllocationRequest
         /// <summary>
         /// allow the user to override the column width calcs with their own defaults
         /// </summary>
-        private List<float> colwidthsoverride = new List<float>();
-        private Dictionary<string, float> publicwidthoverrides = new Dictionary<string, float>();
+        private List<float> colwidthsoverride = new();
+        private Dictionary<string, float> publicwidthoverrides = new();
         public Dictionary<string, float> ColumnWidths
         {
             get { return publicwidthoverrides; }
@@ -1404,7 +1404,7 @@ namespace Baser //AllocationRequest
         /// Allow per column style overrides
         /// </summary>
         private Dictionary<string, DataGridViewCellStyle> colstyles =
-            new Dictionary<string, DataGridViewCellStyle>();
+            new();
         public Dictionary<string, DataGridViewCellStyle> ColumnStyles
         {
             get { return colstyles; }
@@ -1414,7 +1414,7 @@ namespace Baser //AllocationRequest
         /// Allow per column style overrides
         /// </summary>
         private Dictionary<string, DataGridViewCellStyle> altrowcolstyles =
-            new Dictionary<string, DataGridViewCellStyle>();
+            new();
         public Dictionary<string, DataGridViewCellStyle> AlternatingRowColumnStyles
         {
             get { return altrowcolstyles; }
@@ -1424,8 +1424,8 @@ namespace Baser //AllocationRequest
         /// Allow the user to set columns that appear on every pageset. Only used when 
         /// the printout is wider than one page.
         /// </summary>
-        private List<int> fixedcolumns = new List<int>();
-        private List<string> fixedcolumnnames = new List<string>();
+        private List<int> fixedcolumns = new();
+        private List<string> fixedcolumnnames = new();
         public List<string> FixedColumns
         {
             get { return fixedcolumnnames; }
@@ -1434,7 +1434,7 @@ namespace Baser //AllocationRequest
         /// <summary>
         /// List of columns to not display in the grid view printout.
         /// </summary>
-        private List<String> hidecolumns = new List<string>();
+        private List<String> hidecolumns = new();
         public List<String> HideColumns
         {
             get { return hidecolumns; }
@@ -1620,7 +1620,7 @@ namespace Baser //AllocationRequest
             // catch unknown column names
             if (i >= colstoprint.Count)
             {
-                throw new Exception("Unknown Column Name: " + colname);
+                throw new("Unknown Column Name: " + colname);
             }
 
             return i;
@@ -1639,19 +1639,19 @@ namespace Baser //AllocationRequest
         public DGVPrinter()
         {
             // create print document
-            printDoc = new PrintDocument();
+            printDoc = new();
             //printDoc.PrintPage += new PrintPageEventHandler(PrintPageEventHandler);
             //printDoc.BeginPrint += new PrintEventHandler(BeginPrintEventHandler);
-            PrintMargins = new Margins(60, 60, 40, 40);
+            PrintMargins = new(60, 60, 40, 40);
 
             // set default fonts
-            pagenofont = new Font("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
+            pagenofont = new("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
             pagenocolor = Color.Black;
-            titlefont = new Font("Tahoma", 18, FontStyle.Bold, GraphicsUnit.Point);
+            titlefont = new("Tahoma", 18, FontStyle.Bold, GraphicsUnit.Point);
             titlecolor = Color.Black;
-            subtitlefont = new Font("Tahoma", 12, FontStyle.Bold, GraphicsUnit.Point);
+            subtitlefont = new("Tahoma", 12, FontStyle.Bold, GraphicsUnit.Point);
             subtitlecolor = Color.Black;
-            footerfont = new Font("Tahoma", 10, FontStyle.Bold, GraphicsUnit.Point);
+            footerfont = new("Tahoma", 10, FontStyle.Bold, GraphicsUnit.Point);
             footercolor = Color.Black;
 
             // default spacing
@@ -1701,9 +1701,9 @@ namespace Baser //AllocationRequest
         public void PrintDataGridView(DataGridView dgv)
         {
             if (EnableLogging) Logger.LogInfoMsg("PrintDataGridView process started");
-            if (null == dgv) throw new Exception("Null Parameter passed to DGVPrinter.");
+            if (null == dgv) throw new("Null Parameter passed to DGVPrinter.");
             if (!(typeof(DataGridView).IsInstanceOfType(dgv)))
-                throw new Exception("Invalid Parameter passed to DGVPrinter.");
+                throw new("Invalid Parameter passed to DGVPrinter.");
 
             // save the datagridview we're printing
             this.dgv = dgv;
@@ -1723,9 +1723,9 @@ namespace Baser //AllocationRequest
         public void PrintPreviewDataGridView(DataGridView dgv)
         {
             if (EnableLogging) Logger.LogInfoMsg("PrintPreviewDataGridView process started");
-            if (null == dgv) throw new Exception("Null Parameter passed to DGVPrinter.");
+            if (null == dgv) throw new("Null Parameter passed to DGVPrinter.");
             if (!(typeof(DataGridView).IsInstanceOfType(dgv)))
-                throw new Exception("Invalid Parameter passed to DGVPrinter.");
+                throw new("Invalid Parameter passed to DGVPrinter.");
 
             // save the datagridview we're printing
             this.dgv = dgv;
@@ -1760,7 +1760,7 @@ namespace Baser //AllocationRequest
         {
             if (EnableLogging) Logger.LogInfoMsg("DisplayPrintDialog process started");
             // create new print dialog and set options
-            PrintDialog pd = new PrintDialog();
+            PrintDialog pd = new();
             pd.UseEXDialog = printDialogSettings.UseEXDialog;
             pd.AllowSelection = printDialogSettings.AllowSelection;
             pd.AllowSomePages = printDialogSettings.AllowSomePages;
@@ -1786,15 +1786,15 @@ namespace Baser //AllocationRequest
         public void PrintNoDisplay(DataGridView dgv)
         {
             if (EnableLogging) Logger.LogInfoMsg("PrintNoDisplay process started");
-            if (null == dgv) throw new Exception("Null Parameter passed to DGVPrinter.");
+            if (null == dgv) throw new("Null Parameter passed to DGVPrinter.");
             if (!(dgv is DataGridView))
-                throw new Exception("Invalid Parameter passed to DGVPrinter.");
+                throw new("Invalid Parameter passed to DGVPrinter.");
 
             // save the grid we're printing
             this.dgv = dgv;
 
-            printDoc.PrintPage += new PrintPageEventHandler(PrintPageEventHandler);
-            printDoc.BeginPrint += new PrintEventHandler(BeginPrintEventHandler);
+            printDoc.PrintPage += new(PrintPageEventHandler);
+            printDoc.BeginPrint += new(BeginPrintEventHandler);
 
             // setup and do printing
             SetupPrint();
@@ -1809,22 +1809,22 @@ namespace Baser //AllocationRequest
         public void PrintPreviewNoDisplay(DataGridView dgv)
         {
             if (EnableLogging) Logger.LogInfoMsg("PrintPreviewNoDisplay process started");
-            if (null == dgv) throw new Exception("Null Parameter passed to DGVPrinter.");
+            if (null == dgv) throw new("Null Parameter passed to DGVPrinter.");
             if (!(dgv is DataGridView))
-                throw new Exception("Invalid Parameter passed to DGVPrinter.");
+                throw new("Invalid Parameter passed to DGVPrinter.");
 
             // save the grid we're printing
             this.dgv = dgv;
 
-            printDoc.PrintPage += new PrintPageEventHandler(PrintPageEventHandler);
-            printDoc.BeginPrint += new PrintEventHandler(BeginPrintEventHandler);
+            printDoc.PrintPage += new(PrintPageEventHandler);
+            printDoc.BeginPrint += new(BeginPrintEventHandler);
 
             // display the preview dialog
             SetupPrint();
 
             // if the caller hasn't provided a print preview dialog, then create one
             if (null == PreviewDialog)
-                PreviewDialog = new PrintPreviewDialog();
+                PreviewDialog = new();
 
             // set up dialog for preview
             PreviewDialog.Document = printDoc;
@@ -1856,7 +1856,7 @@ namespace Baser //AllocationRequest
             if (EnableLogging) Logger.LogInfoMsg("EmbeddedPrint process started");
             // verify we've been set up properly
             if ((null == dgv))
-                throw new Exception("Null Parameter passed to DGVPrinter.");
+                throw new("Null Parameter passed to DGVPrinter.");
 
             // set the embedded print flag
             EmbeddedPrinting = true;
@@ -1903,7 +1903,7 @@ namespace Baser //AllocationRequest
             if (EnableLogging) Logger.LogInfoMsg("EmbeddedPrintMultipageSetup process started");
             // verify we've been set up properly
             if ((null == dgv))
-                throw new Exception("Null Parameter passed to DGVPrinter.");
+                throw new("Null Parameter passed to DGVPrinter.");
 
             // set the embedded print flag
             EmbeddedPrinting = true;
@@ -1985,7 +1985,7 @@ namespace Baser //AllocationRequest
             if (EnableLogging)
             {
                 Logger.LogInfoMsg("SetupPrint process started");
-                var m = printDoc.DefaultPageSettings.Margins;
+                Margins m = printDoc.DefaultPageSettings.Margins;
                 Logger.LogInfoMsg(String.Format("Initial Printer Margins are {0}, {1}, {2}, {3}", m.Left, m.Right, m.Top, m.Bottom));
             }
 
@@ -2178,17 +2178,17 @@ namespace Baser //AllocationRequest
             // rows to print (handles "selection" and "current page" options
             if (PrintRange.Selection == printRange)
             {
-                temprowstoprint = new SortedList(dgv.SelectedCells.Count);
-                tempcolstoprint = new SortedList(dgv.SelectedCells.Count);
+                temprowstoprint = new(dgv.SelectedCells.Count);
+                tempcolstoprint = new(dgv.SelectedCells.Count);
 
                 //if DGV has rows selected, it's easy, selected rows and all visible columns
                 if (0 != dgv.SelectedRows.Count)
                 {
-                    temprowstoprint = new SortedList(dgv.SelectedRows.Count);
-                    tempcolstoprint = new SortedList(dgv.Columns.Count);
+                    temprowstoprint = new(dgv.SelectedRows.Count);
+                    tempcolstoprint = new(dgv.Columns.Count);
 
                     // sort the rows into index order
-                    temprowstoprint = new SortedList(dgv.SelectedRows.Count);
+                    temprowstoprint = new(dgv.SelectedRows.Count);
                     foreach (DataGridViewRow row in dgv.SelectedRows)
                         if (row.Visible && !row.IsNewRow)
                             temprowstoprint.Add(row.Index, row);
@@ -2199,8 +2199,8 @@ namespace Baser //AllocationRequest
                 // if selected columns, then all rows, and selected columns
                 else if (0 != dgv.SelectedColumns.Count)
                 {
-                    temprowstoprint = new SortedList(dgv.Rows.Count);
-                    tempcolstoprint = new SortedList(dgv.SelectedColumns.Count);
+                    temprowstoprint = new(dgv.Rows.Count);
+                    tempcolstoprint = new(dgv.SelectedColumns.Count);
 
                     foreach (DataGridViewRow row in dgv.Rows)
                         if (row.Visible && !row.IsNewRow)
@@ -2215,8 +2215,8 @@ namespace Baser //AllocationRequest
                 {
                     // set up sorted lists. the selectedcells method does not guarantee
                     // that the cells will always be in left-right top-bottom order. 
-                    temprowstoprint = new SortedList(dgv.SelectedCells.Count);
-                    tempcolstoprint = new SortedList(dgv.SelectedCells.Count);
+                    temprowstoprint = new(dgv.SelectedCells.Count);
+                    tempcolstoprint = new(dgv.SelectedCells.Count);
 
                     // for each selected cell, add unique rows and columns
                     int displayindex, colindex, rowindex;
@@ -2244,8 +2244,8 @@ namespace Baser //AllocationRequest
             else if (PrintRange.CurrentPage == printRange)
             {
                 // create lists
-                temprowstoprint = new SortedList(dgv.DisplayedRowCount(true));
-                tempcolstoprint = new SortedList(dgv.Columns.Count);
+                temprowstoprint = new(dgv.DisplayedRowCount(true));
+                tempcolstoprint = new(dgv.Columns.Count);
 
                 // select all visible rows on displayed page
                 for (int i = dgv.FirstDisplayedScrollingRowIndex;
@@ -2264,8 +2264,8 @@ namespace Baser //AllocationRequest
             // what to print until we size all the rows
             else
             {
-                temprowstoprint = new SortedList(dgv.Rows.Count);
-                tempcolstoprint = new SortedList(dgv.Columns.Count);
+                temprowstoprint = new(dgv.Rows.Count);
+                tempcolstoprint = new(dgv.Columns.Count);
 
                 // select all visible rows and all visible columns - but don't include the new 'data entry row' 
                 foreach (DataGridViewRow row in dgv.Rows) if (row.Visible && !row.IsNewRow) temprowstoprint.Add(row.Index, row);
@@ -2275,8 +2275,8 @@ namespace Baser //AllocationRequest
             }
 
             // move rows and columns into global containers
-            rowstoprint = new List<rowdata>(temprowstoprint.Count);
-            foreach (object item in temprowstoprint.Values) rowstoprint.Add(new rowdata() { row = (DataGridViewRow)item });
+            rowstoprint = new(temprowstoprint.Count);
+            foreach (object item in temprowstoprint.Values) rowstoprint.Add(new() { row = (DataGridViewRow)item });
 
             colstoprint = new List<DataGridViewColumn>(tempcolstoprint.Count);
             foreach (object item in tempcolstoprint.Values) colstoprint.Add(item);
@@ -2310,7 +2310,7 @@ namespace Baser //AllocationRequest
         {
             // allocate format if it doesn't already exist
             if (null == format)
-                format = new StringFormat();
+                format = new();
 
             // Set defaults
             format.Alignment = alignment;
@@ -2352,7 +2352,7 @@ namespace Baser //AllocationRequest
             float basewidth, float overridewidth, StringFormat format)
         {
             // Start with the grid view cell size
-            SizeF size = new SizeF(cell.Size);
+            SizeF size = new(cell.Size);
 
             // If we need to do any calculated cell sizes, we need to measure the cell contents
             if ((RowHeightSetting.DataHeight == RowHeight) ||
@@ -2372,7 +2372,7 @@ namespace Baser //AllocationRequest
 
                     // if we don't actually have a value, then just exit with a minimum size.
                     if ((null == cell.Value) || (typeof(DBNull) == cell.Value.GetType()))
-                        return new SizeF(1, 1);
+                        return new(1, 1);
 
                     // Check on type of image cell value - may not be an actual "image" type
                     if ("Image" == cell.ValueType.Name || "Object" == cell.ValueType.Name)
@@ -2384,11 +2384,11 @@ namespace Baser //AllocationRequest
                     {
                         // if it's not an "image" type (i.e. loaded from a database to a bound column)
                         // convert the underlying byte array to an image
-                        ImageConverter ic = new ImageConverter();
+                        ImageConverter ic = new();
                         img = (Image)ic.ConvertFrom((byte[])cell.Value);
                     }
                     else
-                        throw new Exception(String.Format("Unknown image cell underlying type: {0} in column {1}",
+                        throw new(String.Format("Unknown image cell underlying type: {0} in column {1}",
                             cell.ValueType.Name, cell.ColumnIndex));
 
                     // size to print is size of image
@@ -2481,7 +2481,7 @@ namespace Baser //AllocationRequest
         private void measureprintarea(Graphics g)
         {
             int i, j;
-            colwidths = new List<float>(colstoprint.Count);
+            colwidths = new(colstoprint.Count);
             footerHeight = 0;
 
             // temp variables
@@ -2669,7 +2669,7 @@ namespace Baser //AllocationRequest
 
             // assume everything will fit on one page
             pagesets = new List<PageDef>();
-            pagesets.Add(new PageDef(PrintMargins, colstoprint.Count, pageWidth));
+            pagesets.Add(new(PrintMargins, colstoprint.Count, pageWidth));
             int pset = 0;
 
             // Account for row headers 
@@ -2690,7 +2690,7 @@ namespace Baser //AllocationRequest
             // check on fixed columns
             if (printWidth < (pagesets[pset].coltotalwidth))
             {
-                throw new Exception("Fixed column widths exceed the page width.");
+                throw new("Fixed column widths exceed the page width.");
             }
 
             // split remaining columns into page sets
@@ -2710,7 +2710,7 @@ namespace Baser //AllocationRequest
                 // columns longer than the page width are printed on their own page
                 if (printWidth < (pagesets[pset].coltotalwidth + columnwidth) && i != 0)
                 {
-                    pagesets.Add(new PageDef(PrintMargins, colstoprint.Count, pageWidth));
+                    pagesets.Add(new(PrintMargins, colstoprint.Count, pageWidth));
                     pset++;
 
                     // Account for row headers 
@@ -2731,7 +2731,7 @@ namespace Baser //AllocationRequest
                     // check on fixed columns
                     if (printWidth < (pagesets[pset].coltotalwidth))
                     {
-                        throw new Exception("Fixed column widths exceed the page width.");
+                        throw new("Fixed column widths exceed the page width.");
                     }
                 }
 
@@ -3141,7 +3141,7 @@ namespace Baser //AllocationRequest
             if (EnableLogging)
             {
                 Logger.LogInfoMsg(String.Format("Print Page printing page {0} part {1}", CurrentPage, currentpageset + 1));
-                var m = pagesets[currentpageset].margins;
+                Margins m = pagesets[currentpageset].margins;
                 Logger.LogInfoMsg(String.Format("Current Margins are {0}, {1}, {2}, {3}", m.Left, m.Right, m.Top, m.Bottom));
             }
 
@@ -3378,7 +3378,7 @@ namespace Baser //AllocationRequest
             SizeF printsize = g.MeasureString(text, font, pageset.printWidth, format);
 
             // build area to print within
-            RectangleF printarea = new RectangleF((float)pageset.margins.Left, pos, (float)pageset.printWidth,
+            RectangleF printarea = new((float)pageset.margins.Left, pos, (float)pageset.printWidth,
                printsize.Height);
 
             // draw a background, if a Brush has been provided
@@ -3426,7 +3426,7 @@ namespace Baser //AllocationRequest
             float xcoord = pageset.margins.Left + rowheaderwidth;
 
             // set the pen for drawing the grid lines
-            Pen lines = new Pen(dgv.GridColor, 1);
+            Pen lines = new(dgv.GridColor, 1);
 
             //-----------------------------------------------------------------
             // Print the column headers
@@ -3449,7 +3449,7 @@ namespace Baser //AllocationRequest
 
                 // set print area for this individual cell, account for cells larger
                 // than the print area!
-                RectangleF cellprintarea = new RectangleF(xcoord, pos, cellwidth, colheaderheight);
+                RectangleF cellprintarea = new(xcoord, pos, cellwidth, colheaderheight);
 
                 DrawCell(g, cellprintarea, style, col.HeaderCell, 0, columnheadercellformat, lines);
 
@@ -3478,7 +3478,7 @@ namespace Baser //AllocationRequest
             float pos = finalpos;
 
             // set the pen for drawing the grid lines
-            Pen lines = new Pen(dgv.GridColor, 1);
+            Pen lines = new(dgv.GridColor, 1);
 
             // calc row width, account for columns wider than the print area!
             float rowwidth = (pageset.coltotalwidth > pageset.printWidth ? pageset.printWidth : pageset.coltotalwidth);
@@ -3496,7 +3496,7 @@ namespace Baser //AllocationRequest
             DataGridViewCellStyle headerstyle = row.HeaderCell.InheritedStyle.Clone();
 
             // define print rectangle
-            RectangleF printarea = new RectangleF(xcoord, pos, rowwidth,
+            RectangleF printarea = new(xcoord, pos, rowwidth,
                 rowheight);
 
             // fill in the row background as the default color
@@ -3508,7 +3508,7 @@ namespace Baser //AllocationRequest
             if ((bool)PrintRowHeaders)
             {
                 // set print area for this individual cell
-                RectangleF headercellprintarea = new RectangleF(xcoord, pos,
+                RectangleF headercellprintarea = new(xcoord, pos,
                     rowheaderwidth, rowheight);
 
                 DrawCell(g, headercellprintarea, headerstyle, row.HeaderCell, startlocation,
@@ -3546,7 +3546,7 @@ namespace Baser //AllocationRequest
                     cellfont = colstyle.Font;
 
                     // set overall print area for this individual cell 
-                    RectangleF cellprintarea = new RectangleF(xcoord, pos, cellwidth,
+                    RectangleF cellprintarea = new(xcoord, pos, cellwidth,
                         rowheight);
 
                     DrawCell(g, cellprintarea, colstyle, cell, startlocation, finalformat, lines);
@@ -3574,7 +3574,7 @@ namespace Baser //AllocationRequest
         Boolean DrawOwnerDrawCell(Graphics g, int rowindex, int columnindex, RectangleF rectf,
             DataGridViewCellStyle style)
         {
-            DGVCellDrawingEventArgs args = new DGVCellDrawingEventArgs(g, rectf, style,
+            DGVCellDrawingEventArgs args = new(g, rectf, style,
                 rowindex, columnindex);
             OnCellOwnerDraw(args);
             return args.Handled;
@@ -3604,7 +3604,7 @@ namespace Baser //AllocationRequest
                 g.FillRectangle(new SolidBrush(style.BackColor), cellprintarea);
 
                 // reset print area for this individual cell, adjusting 'inward' for cell padding
-                RectangleF paddedcellprintarea = new RectangleF(cellprintarea.X + style.Padding.Left,
+                RectangleF paddedcellprintarea = new(cellprintarea.X + style.Padding.Left,
                     cellprintarea.Y + style.Padding.Top,
                     cellprintarea.Width - style.Padding.Right - style.Padding.Left,
                     cellprintarea.Height - style.Padding.Bottom - style.Padding.Top);
@@ -3614,7 +3614,7 @@ namespace Baser //AllocationRequest
 
                 // define the *actual* print area based on the given startlocation. Offset the start by 
                 // minus the start location, increase the print area height by the startlocation
-                RectangleF actualprint = new RectangleF(paddedcellprintarea.X, paddedcellprintarea.Y - startlocation,
+                RectangleF actualprint = new(paddedcellprintarea.X, paddedcellprintarea.Y - startlocation,
                     paddedcellprintarea.Width, paddedcellprintarea.Height + startlocation);
 
                 // draw content based on cell style, but only for "body" cells
@@ -3689,7 +3689,7 @@ namespace Baser //AllocationRequest
             int y = ((int)rectf.Height - size.Height) / 2;
 
             // draw the checkbox in our temporary graphics context
-            CheckBoxRenderer.DrawCheckBox(tg, new Point(x, y), state);
+            CheckBoxRenderer.DrawCheckBox(tg, new(x, y), state);
 
             //calculate image drawing origin based on cell alignment
             switch (checkboxcell.InheritedStyle.Alignment)
@@ -3761,15 +3761,15 @@ namespace Baser //AllocationRequest
             {
                 // if it's not an "image" type (i.e. loaded from a database to a bound column)
                 // convert the underlying byte array to an image
-                ImageConverter ic = new ImageConverter();
+                ImageConverter ic = new();
                 img = (Image)ic.ConvertFrom((byte[])imagecell.Value);
             }
             else
-                throw new Exception(String.Format("Unknown image cell underlying type: {0} in column {1}",
+                throw new(String.Format("Unknown image cell underlying type: {0} in column {1}",
                     imagecell.ValueType.Name, imagecell.ColumnIndex));
 
             // clipping bounds. This is the portion of the image to fit into the drawing rectangle
-            Rectangle src = new Rectangle();
+            Rectangle src = new();
 
             // calculate deltas
             int dx = 0;
