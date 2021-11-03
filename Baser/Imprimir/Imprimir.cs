@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Baser
+namespace Baser.Imprimir
 {
     class Imprimir
     {

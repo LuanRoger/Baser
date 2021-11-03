@@ -1,4 +1,4 @@
-﻿namespace Baser.Configuration.Sections
+﻿namespace Baser.Managers.Configuration.Sections
 {
     public record DatabaseConnection
     {

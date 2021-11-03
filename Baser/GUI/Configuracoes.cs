@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Baser.Strings;
+using Baser.Enum;
+using Baser.Managers;
+using Baser.Managers.Configuration;
+using GlobalStrings.EventArguments;
 
 namespace Baser.GUI
 {
@@ -11,20 +14,21 @@ namespace Baser.GUI
             InitializeComponent();
             CarregarConfiguracoes();
 
-            LanguagesResouces.GetGlobalizationInstance().LangTextObserver += Configuracoes_LangTextObserver;
+            LanguageManager.SetGlobalizationObserver(GlobalizationOnLangTextObserver);
+            
         }
 
-        private void Configuracoes_LangTextObserver(object sender, GlobalStrings.UpdateModeEventArgs updateModeEventArgs)
+        private void GlobalizationOnLangTextObserver(object sender, UpdateModeEventArgs updatemodeeventargs)
         {
-            label1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 2);
-            label2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 16);
-            btnSalvarConfiguracoes.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 1);
-            Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 0);
+            Text = LanguageManager.ReturnGlobalizationText("Configuration", "WindowTitle");
+            label1.Text = LanguageManager.ReturnGlobalizationText("Configuration", "LabelLanguage");
+            label2.Text = LanguageManager.ReturnGlobalizationText("Configuration", "LabelConnectionString");
+            btnSaveConfiguration.Text = LanguageManager.ReturnGlobalizationText("Configuration", "ButtonSave");
         }
 
         private void CarregarConfiguracoes()
         {
-            cmbIdioma.SelectedIndex = AppConfigurationManger.configManager.LanguageSection.langCode;
+            cmbIdioma.SelectedIndex = (int)AppConfigurationManger.configManager.LanguageSection.langCode;
             txtConnectionString.Text = AppConfigurationManger.configManager.DatabaseConnection.connectionString;
         }
 
@@ -33,7 +37,7 @@ namespace Baser.GUI
             AppConfigurationManger.configManager.LanguageSection = 
                 AppConfigurationManger.configManager.LanguageSection with
             {
-                langCode = cmbIdioma.SelectedIndex
+                langCode = (LanguageCode)cmbIdioma.SelectedIndex
             };
             AppConfigurationManger.configManager.DatabaseConnection = 
                 AppConfigurationManger.configManager.DatabaseConnection with
@@ -43,8 +47,7 @@ namespace Baser.GUI
 
             AppConfigurationManger.SaveConfig();
 
-            LanguagesResouces.GetGlobalizationInstance()
-                .UpdateLang(AppConfigurationManger.configManager.LanguageSection.langCode);
+            LanguageManager.UpdateLanguage(AppConfigurationManger.configManager.LanguageSection.langCode);
         }
     }
 }

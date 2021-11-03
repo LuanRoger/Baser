@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Baser.Strings;
-using Baser.DB.EntityFramework.Models;
 using Baser.Enum;
+using Baser.Managers;
+using Baser.Managers.Configuration;
+using GlobalStrings.EventArguments;
 
 namespace Baser.GUI
 {
@@ -11,16 +12,16 @@ namespace Baser.GUI
         public Login()
         {
             InitializeComponent();
-            LanguagesResouces.GetGlobalizationInstance().LangTextObserver += Login_LangTextObserver;
-            LanguagesResouces.GetGlobalizationInstance().StartGlobalization();
+            LanguageManager.SetGlobalizationObserver(GlobalizationOnLangTextObserver);
         }
 
-        private void Login_LangTextObserver(object sender, GlobalStrings.UpdateModeEventArgs updateModeEventArgs)
+        private void GlobalizationOnLangTextObserver(object sender, UpdateModeEventArgs updatemodeeventargs)
         {
-            label1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 11);
-            label2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 12);
-            btnEntrarLogin.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 14);
-            btnFecharLogin.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 15);
+            Text = LanguageManager.ReturnGlobalizationText("Login", "WindowTitle");
+            label1.Text = LanguageManager.ReturnGlobalizationText("Login", "LabelUsername");
+            label2.Text = LanguageManager.ReturnGlobalizationText("Login", "LabelPassword");
+            btnEntrarLogin.Text = LanguageManager.ReturnGlobalizationText("Login", "ButtonEnter");
+            btnFecharLogin.Text = LanguageManager.ReturnGlobalizationText("Login", "ButtonClose");
         }
 
         private void btnFecharLogin_Click(object sender, EventArgs e) => Application.Exit();

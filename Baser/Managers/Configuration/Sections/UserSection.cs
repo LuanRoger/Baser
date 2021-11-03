@@ -1,6 +1,6 @@
 ﻿using Baser.Enum;
 
-namespace Baser.Configuration.Sections
+namespace Baser.Managers.Configuration.Sections
 {
     public record UserSection
     {

@@ -3,8 +3,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using Baser.Configuration.Sections;
+using Baser.Managers;
 using ClosedXML.Excel;
+using GlobalStrings.EventArguments;
 
 namespace Baser.GUI
 {
@@ -40,7 +41,7 @@ namespace Baser.GUI
             #region MenuClick
                 mnuImprimirLista.Click += (_, _) =>
             {
-                Imprimir imprimir = new();
+                Imprimir.Imprimir imprimir = new();
                 imprimir.ImprimirModelo(dgvLista);
             };
             mnuExportarExcel.Click += (_, _) =>
@@ -61,6 +62,13 @@ namespace Baser.GUI
                 workbook.SaveAs(saveFileDialog.FileName);
             };
             #endregion
+            
+            LanguageManager.SetGlobalizationObserver(GlobalizationOnLangTextObserver);
+        }
+        
+        private void GlobalizationOnLangTextObserver(object sender, UpdateModeEventArgs updatemodeeventargs)
+        {
+            Text = LanguageManager.ReturnGlobalizationText("List", "WindowTitle");
         }
         
         private XLWorkbook CreateExcelSheet()

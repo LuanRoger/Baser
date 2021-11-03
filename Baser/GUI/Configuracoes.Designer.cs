@@ -30,7 +30,7 @@ namespace Baser.GUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuracoes));
-            this.btnSalvarConfiguracoes = new System.Windows.Forms.Button();
+            this.btnSaveConfiguration = new System.Windows.Forms.Button();
             this.cmbIdioma = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,13 +39,13 @@ namespace Baser.GUI
             // 
             // btnSalvarConfiguracoes
             // 
-            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(221, 137);
-            this.btnSalvarConfiguracoes.Name = "btnSalvarConfiguracoes";
-            this.btnSalvarConfiguracoes.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvarConfiguracoes.TabIndex = 1;
-            this.btnSalvarConfiguracoes.Text = "Salvar";
-            this.btnSalvarConfiguracoes.UseVisualStyleBackColor = true;
-            this.btnSalvarConfiguracoes.Click += new System.EventHandler(this.btnSalvarConfiguracoes_Click);
+            this.btnSaveConfiguration.Location = new System.Drawing.Point(221, 137);
+            this.btnSaveConfiguration.Name = "btnSaveConfiguration";
+            this.btnSaveConfiguration.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveConfiguration.TabIndex = 1;
+            this.btnSaveConfiguration.Text = "Salvar";
+            this.btnSaveConfiguration.UseVisualStyleBackColor = true;
+            this.btnSaveConfiguration.Click += new System.EventHandler(this.btnSalvarConfiguracoes_Click);
             // 
             // cmbIdioma
             // 
@@ -93,7 +93,7 @@ namespace Baser.GUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbIdioma);
-            this.Controls.Add(this.btnSalvarConfiguracoes);
+            this.Controls.Add(this.btnSaveConfiguration);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -107,7 +107,7 @@ namespace Baser.GUI
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSalvarConfiguracoes;
+        private System.Windows.Forms.Button btnSaveConfiguration;
         private System.Windows.Forms.ComboBox cmbIdioma;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

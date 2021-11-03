@@ -1,8 +1,9 @@
-﻿using Baser.Enum;
+﻿using System.IO;
+using Baser.Enum;
 using SerializedConfig;
-using SerializedConfig.Types;
+using SerializedConfig.Types.Serialization;
 
-namespace Baser
+namespace Baser.Managers.Configuration
 {
     public static class AppConfigurationManger
     {
@@ -14,7 +15,7 @@ namespace Baser
           },
           LanguageSection = new()
           {
-              langCode = 0 //PT-BR
+              langCode = LanguageCode.PT_BR
           },
           userSection = new()
           {
@@ -34,13 +35,11 @@ namespace Baser
             get => _configManager.configuration;
         }
         
-        public static void SaveConfig()
+        public static void SaveConfig() => _configManager.Save();
+        public static void LoadOrCreateConfig()
         {
-            _configManager.Save();
-        }
-        public static void LoadConfig()
-        {
-            _configManager.Load();
+            if (File.Exists(Consts.CONFIG_FILE_PATH)) _configManager.Load();
+            else SaveConfig();
         }
     }
 }

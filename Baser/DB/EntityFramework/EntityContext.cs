@@ -1,4 +1,5 @@
 ﻿using Baser.DB.EntityFramework.Models;
+using Baser.Managers.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace Baser.DB.EntityFramework

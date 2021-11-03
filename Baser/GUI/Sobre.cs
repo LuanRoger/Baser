@@ -2,8 +2,8 @@
 using System.Drawing.Text;
 using System.Reflection;
 using System.Windows.Forms;
-using Baser.Strings;
-using GlobalStrings;
+using Baser.Managers;
+using GlobalStrings.EventArguments;
 
 namespace Baser.GUI
 {
@@ -12,14 +12,12 @@ namespace Baser.GUI
         public Sobre()
         {
             InitializeComponent();
-            
-            LanguagesResouces.GetGlobalizationInstance().LangTextObserver += OnLangTextObserver;
         }
 
-        private void OnLangTextObserver(object sender, UpdateModeEventArgs updatemodeeventargs)
+        private void GlobalizationOnLangTextObserver(object sender, UpdateModeEventArgs updatemodeeventargs)
         {
-            Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 7);
-            label4.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 17);
+            Text = LanguageManager.ReturnGlobalizationText("About", "WindowTitle");
+            label4.Text = LanguageManager.ReturnGlobalizationText("About", "LabelWallpaper");
         }
 
         private void Sobre_Load(object sender, System.EventArgs e)
@@ -30,6 +28,8 @@ namespace Baser.GUI
 
             lblProgramName.Text = Assembly.GetExecutingAssembly().GetName().Name;
             lblProgramVersion.Text = $"v{Assembly.GetExecutingAssembly().GetName().Version}";
+            
+            LanguageManager.SetGlobalizationObserver(GlobalizationOnLangTextObserver);
         }
     }
 }

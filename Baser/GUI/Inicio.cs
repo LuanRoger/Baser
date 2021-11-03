@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
-using Baser.Strings;
+using Baser.Enum;
+using Baser.Managers;
+using Baser.Managers.Configuration;
+using GlobalStrings.EventArguments;
 
 namespace Baser.GUI
 {
@@ -12,34 +14,25 @@ namespace Baser.GUI
             InitializeComponent();
         }
 
-        private void Globalization_LangTextObserver(object sender, GlobalStrings.UpdateModeEventArgs updateModeEventArgs)
+        private void GlobalizationOnLangTextObserver(object sender, UpdateModeEventArgs updatemodeeventargs)
         {
-            btnSairConta.Size = updateModeEventArgs.lang switch
+            btnSairConta.Size = updatemodeeventargs.lang switch
             {
-                0 => new(100, 23),
-                1 => new(70, 23)
+                LanguageCode.PT_BR => new(100, 23),
+                LanguageCode.EN_US => new(70, 23)
             };
-            Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 3);
-            mnuPrincipal.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 4);
-            mnuMostrarLista.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 5);
-            mnuConfiguracoes.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 6);
-            mnuSobre.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 7);
-            btnSairConta.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 8);
-            toolStripStatusLabel1.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 9);
-            toolStripStatusLabel2.Text = LanguagesResouces.GetGlobalizationInstance().SetText(0, 10);
+            
+            mnuPrincipal.Text = LanguageManager.ReturnGlobalizationText("Home", "MenuHome");
+            mnuMostrarLista.Text = LanguageManager.ReturnGlobalizationText("Home", "SmenuShowList");
+            mnuConfiguracoes.Text = LanguageManager.ReturnGlobalizationText("Home", "MenuConfiguration");
+            mnuSobre.Text = LanguageManager.ReturnGlobalizationText("Home", "MenuAbout");
+            btnSairConta.Text = LanguageManager.ReturnGlobalizationText("Home", "ButtonLogout");
+            toolStripStatusLabel1.Text = LanguageManager.ReturnGlobalizationText("Home", "ShortcutLogout");
+            toolStripStatusLabel2.Text = LanguageManager.ReturnGlobalizationText("Home", "ShortcutExit");
         }
 
         private void tmrInicio_Tick(object sender, EventArgs e) => lblTempo.Text = DateTime.Now.ToString();
-        
-        private void Inicio_Activated(object sender, EventArgs e)
-        {
-            if(Verificadores.IsVisible(this))
-            {
-                LanguagesResouces.GetGlobalizationInstance()
-                    .UpdateLang(AppConfigurationManger.configManager.LanguageSection.langCode);
-            }
-        }
-        
+
         private void Inicio_Load(object sender, EventArgs e)
         {
             ShowInTaskbar = false;
@@ -73,7 +66,7 @@ namespace Baser.GUI
 
             lblUsuario.Text = AppConfigurationManger.configManager.userSection.userName;
 
-            LanguagesResouces.GetGlobalizationInstance().LangTextObserver += Globalization_LangTextObserver;
+            LanguageManager.SetGlobalizationObserver(GlobalizationOnLangTextObserver);
         }
 
         private void btnSairConta_Click(object sender, EventArgs e)

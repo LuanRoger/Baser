@@ -13,7 +13,7 @@ using System.Windows.Forms.VisualStyles;
 
 
 //[module:CLSCompliant(true)]
-namespace Baser //AllocationRequest
+namespace Baser.Imprimir //AllocationRequest
 {
     #region Supporting Classes
 

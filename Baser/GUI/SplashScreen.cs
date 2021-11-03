@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Baser.Strings;
+using Baser.Managers;
+using Baser.Managers.Configuration;
 
 namespace Baser.GUI
 {
@@ -15,10 +15,9 @@ namespace Baser.GUI
             InitializeComponent();
             
             AppManager.CreateAppDirectory();
-            
-            if (File.Exists(Consts.CONFIG_FILE_PATH)) AppConfigurationManger.LoadConfig();
-            else AppConfigurationManger.SaveConfig();
-            
+            AppConfigurationManger.LoadOrCreateConfig();
+            LanguageManager.Init();
+
             try
             {
                 PrivateFontCollection privateFont = new();
@@ -29,7 +28,8 @@ namespace Baser.GUI
             }
             catch
             {
-                MessageBox.Show("Está faltando arquivos essenciais para inicialização do programa, tente reinstalá-lo novamente.", "Error",
+                MessageBox.Show(LanguageManager.ReturnGlobalizationText("InCode", "EssentialFiles"),
+                    LanguageManager.ReturnGlobalizationText("InCode", "MessageBoxError"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
@@ -44,13 +44,11 @@ namespace Baser.GUI
                 LoginApp();
                 return;
             }
-            
-            LanguagesResouces.GetGlobalizationInstance().StartGlobalization();
-            
+
             List<Task> toLoad = new();
             toLoad.Add(Task.Delay(Consts.SPALSHSCREEN_LOAD_TIME));
             toLoad.Add(Task.Run(() => lblStatusCarregamento.Invoke((MethodInvoker) 
-                delegate { lblStatusCarregamento.Text = "Carregando..."; })));
+                delegate { lblStatusCarregamento.Text = LanguageManager.ReturnGlobalizationText("InCode", "SplashScreenLoading");})));
             await Task.WhenAll(toLoad);
 
             Close();

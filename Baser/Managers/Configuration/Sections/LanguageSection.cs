@@ -1,7 +1,9 @@
-﻿namespace Baser.Configuration.Sections
+﻿using Baser.Enum;
+
+namespace Baser.Managers.Configuration.Sections
 {
     public record LanguageSection
     {
-        public int langCode { get; set; }
+        public LanguageCode langCode { get; set; }
     }
 }
