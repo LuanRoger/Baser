@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyVersion>2.4.0.0</AssemblyVersion>
     <ApplicationIcon>BaserIcon256x256.ico</ApplicationIcon>
@@ -11,7 +11,7 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <FileVersion>1.1.0.0</FileVersion>
     <Authors>Luan Roger</Authors>
-    <Version>2.0.0</Version>
+    <Version>2.4.0</Version>
     <Company>LuanRoger</Company>
   </PropertyGroup>
 

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baser", "Baser.csproj", "{75BCC1AA-D57E-4BDD-B230-1E585ABAB463}"
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "BaserPackage", "..\BaserPackage\BaserPackage.wapproj", "{751206E9-6288-4758-94A8-7B8B159523F3}"
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "Baser.Package", "..\Baser.Package\Baser.Package.wapproj", "{751206E9-6288-4758-94A8-7B8B159523F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
