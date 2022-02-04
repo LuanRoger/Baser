@@ -1,5 +1,5 @@
 ﻿using Baser.Enum;
-using GlobalStrings;
+using GlobalStrings.Types;
 
 namespace Baser.Strings
 {

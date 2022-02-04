@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Baser.Managers;
@@ -13,10 +14,16 @@ namespace Baser.GUI
         public SplashScreen()
         {
             InitializeComponent();
-            
+
+            Load += async (_, _) => await LoadAppAction();
+        }
+
+        private async Task LoadAppAction()
+        {
             AppManager.CreateAppDirectory();
-            AppConfigurationManger.LoadOrCreateConfig();
+            AppManager.DownloadFonts();
             LanguageManager.Init();
+            AppConfigurationManger.LoadOrCreateConfig();
 
             try
             {
@@ -34,11 +41,6 @@ namespace Baser.GUI
                 throw;
             }
 
-            Load += async (_, _) => await LoadAppAction();
-        }
-
-        private async Task LoadAppAction()
-        {
             if (string.IsNullOrEmpty(AppConfigurationManger.configManager.userSection.userName))
             {
                 LoginApp();
@@ -46,9 +48,12 @@ namespace Baser.GUI
             }
 
             List<Task> toLoad = new();
-            toLoad.Add(Task.Delay(Consts.SPALSHSCREEN_LOAD_TIME));
             toLoad.Add(Task.Run(() => lblStatusCarregamento.Invoke((MethodInvoker) 
                 delegate { lblStatusCarregamento.Text = LanguageManager.ReturnGlobalizationText("InCode", "SplashScreenLoading");})));
+            toLoad.Add(!File.Exists(Consts.LANGUAGE_FILE_PATH)
+                ? LanguageManager.SaveLangToJson()
+                : LanguageManager.LoadLangToJson());
+            toLoad.Add(Task.Delay(Consts.SPALSHSCREEN_LOAD_TIME));
             await Task.WhenAll(toLoad);
 
             Close();

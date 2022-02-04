@@ -46,7 +46,7 @@ namespace Baser.GUI
             };
             AppConfigurationManger.SaveConfig();
 
-            AppManager.ReiniciarPrograma();
+            AppManager.RestartProgram();
         }
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e) => Environment.Exit(0);

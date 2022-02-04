@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Baser.Enum;
 using Baser.Managers.Configuration;
 using Baser.Strings;
-using GlobalStrings;
+using GlobalStrings.Extensions;
 using GlobalStrings.Globalization;
+using GlobalStrings.Types;
 
 namespace Baser.Managers
 {
@@ -38,6 +40,15 @@ namespace Baser.Managers
             globalization.SyncStrings();
         }
         public static void UpdateLanguage(LanguageCode newLanguageCode) => globalization.UpdateLang(newLanguageCode);
+        
+        public static Task SaveLangToJson()
+        {
+            return globalization.SaveLanguageInfosAsync(Consts.LANGUAGE_FILE_PATH);
+        }
+        public static Task LoadLangToJson()
+        {
+            return globalization.LoadLanguageInfosAsync(Consts.LANGUAGE_FILE_PATH);
+        }
 
         public static string ReturnGlobalizationText(string collectionCode, string key) => 
             globalization.SetText(collectionCode, key);

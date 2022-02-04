@@ -29,16 +29,14 @@ namespace Baser.Managers.Configuration
         };
 
         private static ConfigManager<ConfigurationModel> _configManager { get; } = 
-            new(Consts.CONFIG_FILE_PATH, SerializationFormat.Yaml, configurationModel);
-        public static ConfigurationModel configManager
-        {
-            get => _configManager.configuration;
-        }
-        
+            new(Consts.CONFIG_FILE_PATH, SerializationFormat.Json, configurationModel);
+        public static ConfigurationModel configManager => _configManager.configuration;
+
         public static void SaveConfig() => _configManager.Save();
         public static void LoadOrCreateConfig()
         {
-            if (File.Exists(Consts.CONFIG_FILE_PATH)) _configManager.Load();
+            if (File.Exists(Consts.CONFIG_FILE_PATH)) 
+                _configManager.Load();
             else SaveConfig();
         }
     }

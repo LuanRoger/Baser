@@ -77,7 +77,7 @@ namespace Baser.GUI
             };
             AppConfigurationManger.SaveConfig();
 
-            AppManager.ReiniciarPrograma();
+            AppManager.RestartProgram();
         }
 
         private void Inicio_KeyDown(object sender, KeyEventArgs e)
